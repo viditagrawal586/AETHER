@@ -1,0 +1,104 @@
+:root {
+    --bg-color: #050508;
+    --accent: #00f2ff;
+    --xray: #00ff41; /* Green Scan Line */
+    --alert: #ff3333;
+    --glass: rgba(10, 20, 30, 0.9);
+    --font-display: 'Cinzel', serif;
+    --font-tech: 'Share Tech Mono', monospace;
+}
+
+#bc-logs div {
+    animation: fadeIn 0.3s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-5px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg-color);
+    color: #fff;
+    font-family: var(--font-tech);
+    overflow-x: hidden;
+    cursor: crosshair;
+}
+
+/* Loader */
+#loader-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 9999;
+    display: flex; justify-content: center; align-items: center;
+    animation: forceHide 1s ease-out 3.5s forwards;
+}
+@keyframes forceHide { 
+    90% { opacity: 1; visibility: visible; } 
+    100% { opacity: 0; visibility: hidden; pointer-events: none; } 
+}
+
+/* Background */
+#canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+/* Hero */
+#hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.hero-title { font-family: var(--font-display); font-size: 6rem; letter-spacing: 1.5rem; text-shadow: 0 0 30px rgba(0, 242, 255, 0.4); }
+.hero-subtitle { letter-spacing: 4px; color: var(--accent); margin-top: 10px; margin-bottom: 30px; }
+
+/* Workspace */
+#workspace { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 0; }
+.panel-container { 
+    background: var(--glass); border: 1px solid rgba(0, 242, 255, 0.3); 
+    width: 90%; max-width: 600px; padding: 25px; border-radius: 4px; backdrop-filter: blur(10px); 
+}
+
+/* Upload & Scan Line */
+.upload-zone {
+    border: 2px dashed rgba(255,255,255,0.1); height: 350px; 
+    display: flex; justify-content: center; align-items: center; cursor: pointer;
+    position: relative; overflow: hidden; background: rgba(0,0,0,0.3);
+}
+#preview-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; background: #000; }
+#preview-container.active { display: flex; justify-content: center; align-items: center; }
+#preview-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.scan-laser {
+    position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--xray); box-shadow: 0 0 20px var(--xray);
+    display: none; z-index: 10;
+}
+.scanning .scan-laser { display: block; animation: xrayMove 2s infinite linear; }
+@keyframes xrayMove { 0% { top: 0%; } 100% { top: 100%; } }
+
+/* Buttons */
+.action-btn { 
+    width: 100%; padding: 15px; background: transparent; border: 1px solid var(--accent); 
+    color: var(--accent); font-family: var(--font-tech); cursor: pointer; transition: 0.3s; letter-spacing: 2px;
+}
+.action-btn:hover:not(:disabled) { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
+.hero-btn { max-width: 320px; margin-top: 20px; }
+
+/* Modals */
+.modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.95); z-index: 8000; 
+    display: none; justify-content: center; align-items: center; backdrop-filter: blur(15px); 
+}
+.modal-content { background: #0a141e; border: 1px solid var(--accent); padding: 40px; width: 90%; max-width: 500px; }
+.modal-body { margin: 25px 0; color: #aaa; font-size: 0.9rem; line-height: 1.8; text-align: left; border-top: 1px solid #333; padding-top: 20px; }
+
+/* Personnel Section */
+#team-section { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+    background: rgba(0,0,0,0.95); z-index: 7000; display: none; 
+    justify-content: center; align-items: center; backdrop-filter: blur(20px); 
+}
+#team-section.active { display: flex; }
+.profile-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(0, 242, 255, 0.2); padding: 20px; margin-bottom: 15px; display: flex; align-items: center; }
+.profile-icon { width: 70px; height: 70px; border: 1px solid var(--accent); display: flex; justify-content: center; align-items: center; color: var(--accent); margin-right: 20px; font-size: 1.5rem; }
+.profile-info a { color: var(--accent); text-decoration: none; }
+
+/* Footer */
+#main-footer { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px; text-align: center; background: rgba(0,0,0,0.8); z-index: 500; }
+.footer-link { color: var(--accent); font-weight: bold; text-decoration: none; margin-left: 10px; }

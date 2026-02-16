@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER | Rescue Command</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader-screen">
+        <div class="loader-content">
+            <h1 class="loader-title">AETHER</h1>
+            <div class="terminal-text" id="terminal-output">> INITIALIZING...</div>
+            <div class="progress-bar-wrapper"><div class="progress-bar" id="progress-bar"></div></div>
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <main id="main-interface">
+        <section id="hero">
+            <h1 class="hero-title">AETHER</h1>
+            <p class="hero-subtitle">AUTONOMOUS SURVIVOR DETECTION UNIT | V.2.0(BETA)</p>
+            <button id="enter-btn" class="action-btn hero-btn">ACCESS COMMAND INTERFACE</button>
+            <div class="scroll-prompt">
+                <!-- <br>
+                <br>
+                <br>
+                <br>
+                                <br>
+                <br>
+                <br>
+                <br>
+                <span>SCROLL TO BEGIN</span> -->
+                <!-- <div class="arrow">↓</div> -->
+            </div>
+        </section>
+
+        <section id="workspace">
+            <div class="panel-container">
+                <div class="panel-header">
+                    <span class="status-light"></span> LIVE FEED INPUT
+                </div>
+
+                <div class="upload-zone" id="drop-zone">
+                    <div class="zone-content">
+                        <p>CLICK TO UPLOAD IMAGERY</p>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+
+                    <div id="preview-container">
+                        <img id="preview-img" alt="Uploaded Feed">
+                        <div id="scan-laser" class="scan-laser"></div>
+                    </div>
+                </div>
+
+                <button id="processBtn" class="action-btn" disabled>INITIATE ANALYSIS</button>
+                <button id="detailsBtn" class="action-btn" style="display: none; margin-top: 15px;">VIEW DETAILS</button>
+                
+                <div class="console-log" id="console-output">
+                    <p class="log-line">> WAITING FOR INPUT...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="details-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">ANALYSIS REPORT</h2>
+            <div id="modal-body" class="modal-body">
+                </div>
+
+            <div id="blockchain-terminal" style="display:none; border-top: 1px solid #333; margin-top: 15px; padding-top: 10px;">
+                <p style="color: #00f2ff; font-size: 0.8rem; margin-bottom: 5px;">> BLOCKCHAIN LEDGER (AetherRescue.sol)</p>
+                <div id="bc-logs" style="font-family: monospace; font-size: 0.7rem; color: #888; background: rgba(0,0,0,0.5); padding: 10px; border-left: 2px solid #00f2ff;">
+                    </div>
+            </div>
+            <button id="close-modal" class="action-btn">CLOSE REPORT</button>
+        </div>
+    </div>
+
+    <section id="team-section">
+        <div class="team-container">
+            <button id="back-btn" class="back-btn">← RETURN TO COMMAND</button>
+            <h2 class="team-title">PERSONNEL FILES</h2>
+            
+            <div class="profile-card">
+                <div class="profile-icon">SD</div>
+                <div class="profile-info">
+                    <h3>Suyash Dwivedi</h3>
+                    <p class="role">FRONTEND & ML DEVELOPER</p>
+                    <p class="bio"><a href="mailto:suyashdwivedi1234@gmail.com">suyashdwivedi1234@gmail.com</a></p>
+                    <p class="bio"><a href="https://github.com/suyashdwivedi1" target="_blank">GitHub: @suyashdwivedi1</a></p>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-icon">VA</div>
+                <div class="profile-info">
+                    <h3>Vidit Agrawal</h3>
+                    <p class="role">BACKEND & BLOCKCHAIN</p>
+                    <p class="bio"><a href="mailto:viditagrawal586@gmail.com">viditagrawal586@gmail.com</a></p>
+                    <p class="bio"><a href="https://github.com/viditagrawal586" target="_blank">GitHub: @viditagrawal586</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer">
+        <div class="footer-content">
+            <span>SYSTEM V.2.0(BETA)</span> | 
+            <a href="#" id="team-link" class="footer-link">ABOUT US</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

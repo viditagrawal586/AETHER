@@ -1,0 +1,11 @@
+{
+  "name": "aether-frontend",
+  "version": "1.0.0",
+  "description": "Frontend interface for AETHER Visual Processing Unit",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server ."
+  },
+  "author": "Your Name",
+  "license": "ISC"
+}
